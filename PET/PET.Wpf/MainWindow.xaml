@@ -20,7 +20,7 @@
             <TabItem Header="Observanter">
                 <views:ObservantView x:Name="observantView" />
             </TabItem>
-            <TabItem Header="Honorering">
+            <!--<TabItem Header="Honorering">
                 <views:PaymentView x:Name="paymentView" />
             </TabItem>
             <TabItem Header="Rapporter">
@@ -28,7 +28,7 @@
             </TabItem>
             <TabItem Header="Kommentarer">
                 <views:CommentView x:Name="commentView" />
-            </TabItem>
+            </TabItem>-->
         </TabControl>
     </Grid>
 </Window>
