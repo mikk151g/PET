@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PET.Wpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,10 @@ namespace PET.Wpf.Views
             InitializeComponent();
         }
 
+        InformantViewModel viewModel = new InformantViewModel();
+
+        #region Private Methods
+
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (this.IsVisible == true)
@@ -32,5 +37,33 @@ namespace PET.Wpf.Views
                 Application.Current.MainWindow.DataContext = viewModel;
             }
         }
+
+        private void buttonCreateInformant_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CreateInformant(textBoxFirstNameInformants.Text, textBoxLastNameInformants.Text, textBoxAddressInformants.Text, textBoxPhoneNumberInformants.Text, textBoxPhotoInformants.Text,
+                textBoxKeywordsInformants.Text);
+            dataGridInformants.ItemsSource = viewModel.Informants;
+        }
+
+        private void buttonUpdateInformant_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridInformants.SelectedItem != null)
+            {
+                viewModel.UpdateInformant(dataGridInformants.SelectedItem, textBoxFirstNameInformants.Text, textBoxLastNameInformants.Text, textBoxAddressInformants.Text, textBoxPhoneNumberInformants.Text,
+                textBoxPhotoInformants.Text, textBoxKeywordsInformants.Text);
+                dataGridInformants.ItemsSource = viewModel.Informants;
+            }
+        }
+
+        private void buttonDeleteInformant_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridInformants.SelectedItem != null)
+            {
+                viewModel.DeleteInformant(dataGridInformants.SelectedItem);
+                dataGridInformants.ItemsSource = viewModel.Informants;
+            }
+        }
+
+        #endregion
     }
 }
