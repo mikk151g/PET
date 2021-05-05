@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\AgentViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\InformantViewModel.cs" />
     <Compile Include="Views\AgentView.xaml.cs">
       <DependentUpon>AgentView.xaml</DependentUpon>
     </Compile>
