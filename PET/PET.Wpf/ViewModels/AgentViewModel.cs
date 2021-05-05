@@ -119,7 +119,7 @@ namespace PET.Wpf.ViewModels
         /// Converts the item to a agent and deletes it
         /// </summary>
         /// <param name="selectedItem">The item to delete</param>
-        public void DeleteRegistration(object selectedItem)
+        public void DeleteAgent(object selectedItem)
         {
             int idToDelete = ((Agent)selectedItem).Id;
 
