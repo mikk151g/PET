@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PET.Wpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,10 @@ namespace PET.Wpf.Views
             InitializeComponent();
         }
 
+        AgentViewModel viewModel = new AgentViewModel();
+
+        #region Private Methods
+
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (this.IsVisible == true)
@@ -32,5 +37,22 @@ namespace PET.Wpf.Views
                 Application.Current.MainWindow.DataContext = viewModel;
             }
         }
+
+        private void buttonCreateAgent_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CreateAgent(textBoxFirstNameAgents.Text, textBoxLastNameAgents.Text, textBoxAddressAgents.Text, textBoxPhoneNumberAgents.Text, textBoxPhotoAgents.Text);
+        }
+
+        private void buttonUpdateAgent_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.UpdateAgent(dataGridAgents.SelectedItem, textBoxFirstNameAgents.Text, textBoxLastNameAgents.Text, textBoxAddressAgents.Text, textBoxPhoneNumberAgents.Text, textBoxPhotoAgents.Text);
+        }
+
+        private void buttonDeleteAgent_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.DeleteAgent(dataGridAgents.SelectedItem);
+        }
+
+        #endregion
     }
 }
