@@ -1,0 +1,161 @@
+﻿<UserControl x:Class="PET.Wpf.Views.InformantView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PET.Wpf.Views"
+             mc:Ignorable="d"
+             Height="391"
+             Width="786"
+             Background="White"
+             IsVisibleChanged="UserControl_IsVisibleChanged">
+    <Grid x:Name="gridInformants">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="stackPanelFirstNameInformants"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Orientation="Horizontal">
+            <Label x:Name="labelFirstNameInformants"
+                   Content="_Fornavn"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxFirstNameInformants}"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="textBoxFirstNameInformants"
+                     Height="25"
+                     Width="160"
+                     Margin="42.5,0,0,0" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelLastNameInformants"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Orientation="Horizontal">
+            <Label x:Name="labelLastNameInformants"
+                   Content="_Efternavn"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxLastNameInformants}"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="textBoxLastNameInformants"
+                     Height="25"
+                     Width="160"
+                     Margin="35,0,0,0" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelAddressInformants"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Orientation="Horizontal">
+            <Label x:Name="labelAddressInformants"
+                   Content="_Adresse"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxAddressInformants}"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="textBoxAddressInformants"
+                     Height="25"
+                     Width="160"
+                     Margin="42.5,0,0,0" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelPhoneNumberInformants"
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Orientation="Horizontal">
+            <Label x:Name="labelPhoneNumberInformants"
+                   Content="_Telefonnummer"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxPhoneNumberInformants}"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="textBoxPhoneNumberInformants"
+                     Height="25"
+                     Width="160"/>
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelPhotoInformants"
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    Orientation="Horizontal">
+            <Label x:Name="labelPhotoInformants"
+                   Content="_Billede (url)"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxPhotoInformants}"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="textBoxPhotoInformants"
+                     Height="25"
+                     Width="160"
+                     Margin="22.5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelKeywordsInformants"
+                    Grid.Column="0"
+                    Grid.Row="5"
+                    Orientation="Horizontal">
+            <Label x:Name="labelInformants"
+                   Content="_Keywords"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxKeywordsInformants}"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="textBoxKeywordsInformants"
+                     Height="25"
+                     Width="160"
+                     Margin="30,0,0,0" />
+        </StackPanel>
+
+        <Grid x:Name="gridActionButtonsInformants"
+              Grid.Column="0"
+              Grid.Row="6">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="buttonDeleteInformant"
+                    Grid.Column="0"
+                    Content="Slet"
+                    FontWeight="Bold"
+                    Background="OrangeRed"
+                    Foreground="White"
+                    Margin="10,12.5"
+                    Click="buttonDeleteInformant_Click" />
+            <Button x:Name="buttonUpdateInformant"
+                    Grid.Column="1"
+                    Content="Redigér"
+                    FontWeight="Bold"
+                    Margin="10,12.5"
+                    Click="buttonUpdateInformant_Click" />
+            <Button x:Name="buttonCreateInformant"
+                    Grid.Column="2"
+                    Content="Opret"
+                    FontWeight="Bold"
+                    Background="YellowGreen"
+                    Margin="10,12.5"
+                    Click="buttonCreateInformant_Click" />
+        </Grid>
+
+        <DataGrid x:Name="dataGridInformants"
+                  Grid.Column="1"
+                  Grid.Row="0"
+                  Grid.RowSpan="7"
+                  Margin="10"
+                  ItemsSource="{Binding Path=Informants}"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  IsReadOnly="True" />
+    </Grid>
+</UserControl>

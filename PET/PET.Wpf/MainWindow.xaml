@@ -15,19 +15,19 @@
                 <views:AgentView x:Name="agentView" />
             </TabItem>
             <TabItem Header="Informanter">
-                <views:InformantView x:Name="agentView" />
+                <views:InformantView x:Name="informantView" />
             </TabItem>
             <TabItem Header="Observanter">
-                <views:ObservantView x:Name="agentView" />
+                <views:ObservantView x:Name="observantView" />
             </TabItem>
             <TabItem Header="Honorering">
-                <views:PaymentView x:Name="agentView" />
+                <views:PaymentView x:Name="paymentView" />
             </TabItem>
             <TabItem Header="Rapporter">
-                <views:ReportView x:Name="agentView" />
+                <views:ReportView x:Name="reportView" />
             </TabItem>
             <TabItem Header="Kommentarer">
-                <views:CommentView x:Name="agentView" />
+                <views:CommentView x:Name="commentView" />
             </TabItem>
         </TabControl>
     </Grid>
