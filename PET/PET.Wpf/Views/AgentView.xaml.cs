@@ -41,16 +41,26 @@ namespace PET.Wpf.Views
         private void buttonCreateAgent_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CreateAgent(textBoxFirstNameAgents.Text, textBoxLastNameAgents.Text, textBoxAddressAgents.Text, textBoxPhoneNumberAgents.Text, textBoxPhotoAgents.Text);
+            dataGridAgents.ItemsSource = viewModel.Agents;
         }
 
         private void buttonUpdateAgent_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.UpdateAgent(dataGridAgents.SelectedItem, textBoxFirstNameAgents.Text, textBoxLastNameAgents.Text, textBoxAddressAgents.Text, textBoxPhoneNumberAgents.Text, textBoxPhotoAgents.Text);
+            if (dataGridAgents.SelectedItem != null)
+            {
+                viewModel.UpdateAgent(dataGridAgents.SelectedItem, textBoxFirstNameAgents.Text, textBoxLastNameAgents.Text, textBoxAddressAgents.Text, textBoxPhoneNumberAgents.Text,
+                    textBoxPhotoAgents.Text);
+                dataGridAgents.ItemsSource = viewModel.Agents;
+            }
         }
 
         private void buttonDeleteAgent_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.DeleteAgent(dataGridAgents.SelectedItem);
+            if (dataGridAgents.SelectedItem != null)
+            {
+                viewModel.DeleteAgent(dataGridAgents.SelectedItem);
+                dataGridAgents.ItemsSource = viewModel.Agents;
+            }
         }
 
         #endregion
