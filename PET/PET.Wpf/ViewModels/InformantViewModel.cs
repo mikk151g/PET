@@ -47,14 +47,16 @@ namespace PET.Wpf.ViewModels
         {
             using (PETEntities db = new PETEntities())
             {
-                var informants = from informant in db.Informant
+                ObservableCollection<Informant> informants = new ObservableCollection<Informant>();
+                var query = from informant in db.Informant
                              orderby informant.Id
                              select informant;
 
-                foreach (Informant informant in informants)
+                foreach (Informant informant in query)
                 {
-                    Informants.Add(informant);
+                    informants.Add(informant);
                 }
+                Informants = informants;
             }
         }
 
@@ -126,18 +128,13 @@ namespace PET.Wpf.ViewModels
         public void DeleteInformant(object selectedItem)
         {
             int idToDelete = ((Informant)selectedItem).Id;
-
-            foreach (Informant informant in Informants)
+                        
+            using (PETEntities db = new PETEntities())
             {
-                if (informant.Id == idToDelete)
-                {
-                    using (PETEntities db = new PETEntities())
-                    {
-                        db.Informant.Remove(informant);
-                        db.SaveChanges();
-                    }
-                }
-            }
+                var delete = db.Informant.Where(i => i.Id == idToDelete).First();
+                db.Informant.Remove(delete);
+                db.SaveChanges();
+            }   
             GetAllInformants();
         }
 
