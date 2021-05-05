@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="PET.Wpf.Views.AgentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PET.Wpf.Views"
+             mc:Ignorable="d"
+             Height="391"
+             Width="786"
+             Background="White"
+             IsVisibleChanged="UserControl_IsVisibleChanged">
+    <Grid x:Name="gridAgents">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="stackPanelFirstNameAgents"
+                    Grid.Column="0"
+                    Grid.Row="0">
+            <Label x:Name="labelFirstNameAgents"
+                   Content="_Fornavn"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxFirstNameAgents}" />
+            <TextBox x:Name="textBoxFirstNameAgents"
+                     Height="25"
+                     Margin="0,0,100,0" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelLastNameAgents"
+                    Grid.Column="0"
+                    Grid.Row="1">
+            <Label x:Name="labelLastNameAgents"
+                   Content="_Efternavn"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxLastNameAgents}" />
+            <TextBox x:Name="textBoxLastNameAgents"
+                     Height="25"
+                     Margin="0,0,80,0" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelAddressAgents"
+                    Grid.Column="0"
+                    Grid.Row="2">
+            <Label x:Name="labelAddressAgents"
+                   Content="_Adresse"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxAddressAgents}" />
+            <TextBox x:Name="textBoxAddressAgents"
+                     Height="25"
+                     Margin="0,0,80,0" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelPhoneNumberAgents"
+                    Grid.Column="0"
+                    Grid.Row="3">
+            <Label x:Name="labelPhoneNumberAgents"
+                   Content="_Telefonnummer"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxPhoneNumberAgents}" />
+            <TextBox x:Name="textBoxPhoneNumberAgents"
+                     Height="25"
+                     Margin="0,0,140,0" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackPanelPhotoAgents"
+                    Grid.Column="0"
+                    Grid.Row="4">
+            <Label x:Name="labelPhotoAgents"
+                   Content="_Billede (url)"
+                   FontWeight="SemiBold"
+                   Target="{Binding ElementName=textBoxPhotoAgents}" />
+            <TextBox x:Name="textBoxPhotoAgents"
+                     Height="25"
+                     Margin="0,0,80,0" />
+        </StackPanel>
+
+        <Grid x:Name="gridActionButtonsAgents"
+              Grid.Column="0"
+              Grid.Row="5">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="buttonDeleteAgent"
+                    Grid.Column="0"
+                    Content="Slet"
+                    FontWeight="Bold"
+                    Background="OrangeRed"
+                    Foreground="White"
+                    Margin="10,17.5"
+                    Click="buttonDeleteAgent_Click" />
+            <Button x:Name="buttonUpdateAgent"
+                    Grid.Column="1"
+                    Content="Redigér"
+                    FontWeight="Bold"
+                    Margin="10,17.5"
+                    Click="buttonUpdateAgent_Click" />
+            <Button x:Name="buttonCreateAgent"
+                    Grid.Column="2"
+                    Content="Opret"
+                    FontWeight="Bold"
+                    Background="YellowGreen"
+                    Margin="10,17.5"
+                    Click="buttonCreateAgent_Click" />
+        </Grid>
+
+        <DataGrid x:Name="dataGridAgents"
+                  Grid.Column="1"
+                  Grid.Row="0"
+                  Grid.RowSpan="6"
+                  Margin="10"
+                  ItemsSource="{Binding Path=Agents}"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  IsReadOnly="True" />
+    </Grid>
+</UserControl>

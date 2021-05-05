@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PET.Wpf"
+        xmlns:views="clr-namespace:PET.Wpf.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="800">
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Agenter">
+                <views:AgentView x:Name="agentView" />
+            </TabItem>
+            <TabItem Header="Informanter">
+                <views:InformantView x:Name="agentView" />
+            </TabItem>
+            <TabItem Header="Observanter">
+                <views:ObservantView x:Name="agentView" />
+            </TabItem>
+            <TabItem Header="Honorering">
+                <views:PaymentView x:Name="agentView" />
+            </TabItem>
+            <TabItem Header="Rapporter">
+                <views:ReportView x:Name="agentView" />
+            </TabItem>
+            <TabItem Header="Kommentarer">
+                <views:CommentView x:Name="agentView" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
