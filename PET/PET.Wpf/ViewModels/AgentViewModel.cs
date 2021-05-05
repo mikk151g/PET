@@ -12,7 +12,7 @@ namespace PET.Wpf.ViewModels
     {
         #region Private Fields
 
-        private ObservableCollection<Agent> _agents = new ObservableCollection<Agent>();
+        private ObservableCollection<Agent> _agents;
 
         #endregion
 
@@ -47,14 +47,16 @@ namespace PET.Wpf.ViewModels
         {
             using (PETEntities db = new PETEntities())
             {
-                var agents = from agent in db.Agent
-                                          orderby agent.Id
+                ObservableCollection<Agent> agents = new ObservableCollection<Agent>();
+                var query = from agent in db.Agent
+                                          orderby agent.FirstName
                                           select agent;
 
-                foreach (Agent registration in agents)
+                foreach (Agent agent in query)
                 {
-                    Agents.Add(registration);
+                    agents.Add(agent);
                 }
+                Agents = agents;
             }
         }
 
@@ -123,16 +125,11 @@ namespace PET.Wpf.ViewModels
         {
             int idToDelete = ((Agent)selectedItem).Id;
 
-            foreach (Agent agent in Agents)
+            using (PETEntities db = new PETEntities())
             {
-                if (agent.Id == idToDelete)
-                {
-                    using (PETEntities db = new PETEntities())
-                    {
-                        db.Agent.Remove(agent);
-                        db.SaveChanges();
-                    }
-                }
+                var delete = db.Agent.Where(a => a.Id == idToDelete).FirstOrDefault();
+                db.Agent.Remove(delete);
+                db.SaveChanges();
             }
             GetAllAgents();
         }
